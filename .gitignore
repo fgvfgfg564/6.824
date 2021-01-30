@@ -1,5 +1,6 @@
 pkg/
 api.key
 *-handin.tar.gz
-6.824-backup
+6.824-backup/
+mr-*
 
