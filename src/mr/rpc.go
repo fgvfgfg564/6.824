@@ -8,22 +8,35 @@ package mr
 
 import "os"
 import "strconv"
+import "fmt"
 
 //
 // example to show how to declare the arguments
 // and reply for an RPC.
 //
 
-type ExampleArgs struct {
-	X int
+const (
+	TASK_INIT = iota
+	TASK_REDUCE
+	TASK_MAP
+	TASK_EXIT
+)
+
+type Args struct {
+	Task   int
+	Number int
 }
 
-type ExampleReply struct {
-	Y int
+type Reply struct {
+	Task       int
+	Number     int
+	NMapReduce int
+	Filename   string
 }
 
-// Add your RPC definitions here.
-
+func (a *Reply) print() {
+	fmt.Printf("%d %d %d %v\n", a.Task, a.Number, a.NMapReduce, a.Filename)
+}
 
 // Cook up a unique-ish UNIX-domain socket name
 // in /var/tmp, for the master.
